@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "FoundationRailsSeries" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -12,8 +12,25 @@
   </head>
 
   <body>
+    <%= render 'shared/navigation' %>
 
-    <%= yield %>
+    <div class="row">
+      <% flash.each do |name, msg| %>
+        <% if msg.is_a?(String) %>
+          <%= content_tag :div, msg, class: "alert-box #{name} radius" %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div clas="row">
+      <div class="small-3 column">
+        <h3>Tealeaf Academy Todo</h3>
+      </div>
+      <div class="small-9 column">
+        <%= yield %>
+      </div>
+    </div>
+
     <%= javascript_include_tag "application" %>
   </body>
 </html>
