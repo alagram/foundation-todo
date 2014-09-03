@@ -23,7 +23,11 @@
   <tbody>
     <% @todos.each do |todo| %>
       <tr>
-        <td><%= todo.title %></td>
+        <td>
+          <span data-tooltip aria-haspopup="true" data-options="disable_for_touch:true" class="has-tip tip-left radius" title="<%= "Created on #{todo.created_at.strftime("%m%e%Y at %w:%M %p")}, Last modified on #{todo.updated_at.strftime("%m%e%Y at %w:%M %p")}" %>">
+            <%= todo.title %>
+          </span>
+        </td>
         <td>
           <% if todo.notes? %>
             <a href="#" data-reveal-id="todo-<%= todo.id %>-notes">View notes</a>
